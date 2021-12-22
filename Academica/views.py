@@ -28,6 +28,25 @@ def respuesta(request):
      regm=reg.lower()
      rer=''
      doc = open("plantillas/Datos.html")
+     error = open("plantillas/Error.html")
+
+     if(regm != "las" or regm != "lan"):
+          plt=Template(error.read())
+          ctx =Context()
+          doc.close()
+          documento=plt.render(ctx)
+          return HttpResponse(documento)
+
+     try:
+          lol.UserData(sum,regm)
+     except:
+          plt=Template(error.read())
+          ctx =Context()
+          doc.close()
+          documento=plt.render(ctx)
+          return HttpResponse(documento)
+
+
      try:
           if (bases1.buscar_usuario(sum) == False):
                if regm=="las":
@@ -44,7 +63,6 @@ def respuesta(request):
                     bases1.agregar_partidas(sum,'la1')
                     rer = 'la1'
      except:
-          error = open("plantillas/Error.html")
           plt=Template(error.read())
           ctx =Context()
           doc.close()
