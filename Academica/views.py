@@ -6,7 +6,7 @@ from cosas import bases1,lol
 # Create your views here.
 
 def indice(request):
-     doc = open("C:/TrabajoBD/plantillas/index.html")
+     doc = open("plantillas/index.html")
      plt = Template(doc.read())
      doc.close()
      ctx =Context({})
@@ -14,7 +14,7 @@ def indice(request):
      return HttpResponse(documento)
 
 def error(request):
-     doc = open("C:/TrabajoBD/plantillas/Error.html")
+     doc = open("plantillas/Error.html")
      plt = Template(doc.read())
      doc.close()
      ctx =Context()
@@ -27,7 +27,7 @@ def respuesta(request):
      reg= request.GET['Region']
      regm=reg.lower()
      rer=''
-     doc = open("C:/TrabajoBD/plantillas/Datos.html")
+     doc = open("plantillas/Datos.html")
      if (bases1.buscar_usuario(sum) == False):
           if regm=="las":
                bases1.LlenarUsuario(sum,'la2')
