@@ -28,6 +28,16 @@ def respuesta(request):
      regm=reg.lower()
      rer=''
      doc = open("plantillas/Datos.html")
+     try:
+          bases1.buscar_usuario(sum)
+     except:
+          error = open("plantillas/Error.html")
+          plt=Template(error.read())
+          ctx =Context()
+          doc.close()
+          documento=plt.render(ctx)
+          return HttpResponse(documento)
+          
      if (bases1.buscar_usuario(sum) == False):
           if regm=="las":
                bases1.LlenarUsuario(sum,'la2')
