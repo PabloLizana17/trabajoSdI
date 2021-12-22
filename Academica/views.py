@@ -29,7 +29,20 @@ def respuesta(request):
      rer=''
      doc = open("plantillas/Datos.html")
      try:
-          bases1.buscar_usuario(sum)
+          if (bases1.buscar_usuario(sum) == False):
+               if regm=="las":
+                    bases1.LlenarUsuario(sum,'la2')
+                    rer = 'la2'
+               elif regm=="lan":
+                    bases1.LlenarUsuario(sum,'la1')
+                    rer = 'la1'
+          else :
+               if regm=="las":
+                    bases1.agregar_partidas(sum,'la2')
+                    rer = 'la2'
+               elif regm=="lan":
+                    bases1.agregar_partidas(sum,'la1')
+                    rer = 'la1'
      except:
           error = open("plantillas/Error.html")
           plt=Template(error.read())
@@ -37,21 +50,6 @@ def respuesta(request):
           doc.close()
           documento=plt.render(ctx)
           return HttpResponse(documento)
-          
-     if (bases1.buscar_usuario(sum) == False):
-          if regm=="las":
-               bases1.LlenarUsuario(sum,'la2')
-               rer = 'la2'
-          elif regm=="lan":
-               bases1.LlenarUsuario(sum,'la1')
-               rer = 'la1'
-     else :
-          if regm=="las":
-               bases1.agregar_partidas(sum,'la2')
-               rer = 'la2'
-          elif regm=="lan":
-               bases1.agregar_partidas(sum,'la1')
-               rer = 'la1'
          
      x = ""
      y = ""
