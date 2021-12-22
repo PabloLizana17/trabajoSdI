@@ -28,7 +28,7 @@ def respuesta(request):
      regm=reg.lower()
      rer=''
      doc = open("C:/TrabajoBD/plantillas/Datos.html")
-     if (bases1.buscar_usuario(sum)==False):
+     if (bases1.buscar_usuario(sum) == False):
           if regm=="las":
                bases1.LlenarUsuario(sum,'la2')
                rer = 'la2'
