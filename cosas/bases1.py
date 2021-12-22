@@ -11,7 +11,7 @@ response_2= requests.get('http://ddragon.leagueoflegends.com/cdn/11.12.1/data/es
 base = psycopg2.connect(
     dbname = "Proyecto",
     user = 'postgres',
-    password = '1234',
+    password = 'hector25',
     host = '127.0.0.1',
     port = '5432'    
 )
